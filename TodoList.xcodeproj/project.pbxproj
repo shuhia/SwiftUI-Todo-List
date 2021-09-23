@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		00FE450326FD04F400E3F142 /* TodoDetailedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FE450226FD04F400E3F142 /* TodoDetailedView.swift */; };
 		022EF16725EEE90900112224 /* TodoListApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022EF16625EEE90900112224 /* TodoListApp.swift */; };
 		022EF16B25EEE90C00112224 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 022EF16A25EEE90C00112224 /* Assets.xcassets */; };
 		022EF16E25EEE90C00112224 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 022EF16D25EEE90C00112224 /* Preview Assets.xcassets */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		00FE450226FD04F400E3F142 /* TodoDetailedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoDetailedView.swift; sourceTree = "<group>"; };
 		022EF16325EEE90900112224 /* TodoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodoList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		022EF16625EEE90900112224 /* TodoListApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListApp.swift; sourceTree = "<group>"; };
 		022EF16A25EEE90C00112224 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 				022EF17F25EEEDF000112224 /* AddView.swift */,
 				02F8C3FD25F08D6500BDAB62 /* NoItemsView.swift */,
 				02F8C40125F19FBE00BDAB62 /* LaunchScreen.storyboard */,
+				00FE450226FD04F400E3F142 /* TodoDetailedView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -187,6 +190,7 @@
 				022EF16725EEE90900112224 /* TodoListApp.swift in Sources */,
 				022EF17825EEEA1D00112224 /* ListView.swift in Sources */,
 				02F8C3FE25F08D6500BDAB62 /* NoItemsView.swift in Sources */,
+				00FE450326FD04F400E3F142 /* TodoDetailedView.swift in Sources */,
 				022EF17D25EEEC0100112224 /* ListRowView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
