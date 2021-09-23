@@ -13,21 +13,29 @@ struct AddView: View {
     
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var listViewModel: ListViewModel
-    @State var textFieldText: String = ""
-    
+    @State var textFieldTitle: String = ""
+    @State var textFieldDescription: String = ""
     @State var alertTitle: String = ""
     @State var showAlert: Bool = false
-    
-    // MARK: BODY
+    @State var dueDate = Date()
     
     var body: some View {
         ScrollView {
             VStack {
-                TextField("Type something here...", text: $textFieldText)
+                TextField("Add a title here...", text: $textFieldTitle)
                     .padding(.horizontal)
                     .frame(height: 55)
                     .background(Color(UIColor.secondarySystemBackground))
                     .cornerRadius(10)
+                
+                TextField("Add a description here..", text: $textFieldDescription)
+                    .padding(.horizontal)
+                    .frame(height: 55)
+                    .background(Color(UIColor.secondarySystemBackground))
+                    .cornerRadius(10)
+                
+                DatePicker("Due date:",
+                           selection: $dueDate, displayedComponents: [.date])
                 
                 Button(action: saveButtonPressed, label: {
                     Text("Save".uppercased())
@@ -39,23 +47,22 @@ struct AddView: View {
                         .cornerRadius(10)
                 })
             }
-            .padding(14)
+            .padding(10)
         }
         .navigationTitle("Add an Item 🖊")
         .alert(isPresented: $showAlert, content: getAlert)
     }
     
-    // MARK: FUNCTIONS
     
     func saveButtonPressed() {
         if textIsAppropriate() {
-            listViewModel.addItem(title: textFieldText)
+            listViewModel.addItem(title: textFieldTitle, description: textFieldDescription, dueDate: Date())
             presentationMode.wrappedValue.dismiss()
         }
     }
     
     func textIsAppropriate() -> Bool {
-        if textFieldText.count < 3 {
+        if textFieldTitle.count < 3 {
             alertTitle = "Your new todo item must be at least 3 characters long!!! 😨😰😱"
             showAlert.toggle()
             return false
