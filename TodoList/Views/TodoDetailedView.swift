@@ -67,7 +67,7 @@ struct TodoDetailedView: View {
     
     func saveButtonPressed() {
         if textIsAppropriate() {
-            listViewModel.addItem(title: title)
+            listViewModel.addItem(title: title, description: description, dueDate: Date())
             presentationMode.wrappedValue.dismiss()
         }
     }
