@@ -36,7 +36,7 @@ struct ListRowView: View {
                 }
                 
             }
-            NavigationLink("", destination: TodoDetailedView()) //tap anywhere on task to navigate to the detailed view
+            NavigationLink("", destination: TodoDetailedView(id:item.id, title:item.title, description: item.description,dueDate:item.dueDate, isCompleted:item.isCompleted)) //tap anywhere on task to navigate to the detailed view
         }
         .padding(6)
     }

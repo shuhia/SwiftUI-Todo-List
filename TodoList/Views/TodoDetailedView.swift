@@ -14,11 +14,12 @@ struct TodoDetailedView: View {
     
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var listViewModel: ListViewModel
+    @State var id:String = ""
     @State var title: String = ""
     // Get values from viewModel
     @State var description: String = ""
-    @State var date = Date()
-    
+    @State var dueDate = Date()
+    @State var isCompleted: Bool = false
     @State var alertTitle: String = ""
     @State var showAlert: Bool = false
     
@@ -40,7 +41,7 @@ struct TodoDetailedView: View {
                     .background(Color(UIColor.secondarySystemBackground))
                     .cornerRadius(10)
                 
-                DatePicker("Due date:", selection: $date, displayedComponents:[.date]
+                DatePicker("Due date:", selection: $dueDate, displayedComponents:[.date]
                 )
                     .padding(.horizontal)
                     .frame(height: 55)
@@ -67,7 +68,7 @@ struct TodoDetailedView: View {
     
     func saveButtonPressed() {
         if textIsAppropriate() {
-            listViewModel.addItem(title: title, description: description, dueDate: Date())
+            listViewModel.updateItem(item: ItemModel(id: id, title: title, description: description, dueDate: dueDate, isCompleted: isCompleted))
             presentationMode.wrappedValue.dismiss()
         }
     }
