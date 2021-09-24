@@ -26,6 +26,7 @@ struct TodoDetailedView: View {
     // MARK: BODY
     
     
+    
     var body: some View {
         ScrollView {
             VStack {
@@ -35,10 +36,9 @@ struct TodoDetailedView: View {
                     .background(Color(UIColor.secondarySystemBackground))
                     .cornerRadius(10)
                 
-                TextEditor(text: $description).multilineTextAlignment(.leading)
-                    .padding(5)
+                TextEditor(text: $description) .multilineTextAlignment(.leading)
                     .frame(height:232, alignment: .topLeading)
-                    .background(Color(UIColor.secondarySystemBackground))
+                    .padding(.all).background(Color(UIColor.secondarySystemBackground))
                     .cornerRadius(10)
                 
                 DatePicker("Due date:", selection: $dueDate, displayedComponents:[.date]
@@ -47,7 +47,7 @@ struct TodoDetailedView: View {
                     .frame(height: 55)
                     .background(Color(UIColor.secondarySystemBackground))
                     .cornerRadius(10)
-                HStack{
+                VStack(alignment: .leading){
                     
                     Image(systemName: isCompleted ? "checkmark.circle" : "circle")
                         .foregroundColor(isCompleted ? .green : .red).padding().onTapGesture {

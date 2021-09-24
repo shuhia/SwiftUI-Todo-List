@@ -46,9 +46,9 @@ struct ListRowView: View {
                 }
                
             }.padding()
-                
-                NavigationLink("", destination: TodoDetailedView(id:item.id, title:item.title, description: item.description,dueDate:item.dueDate, isCompleted:item.isCompleted))
-                    .frame(width: 20.0) //tap anywhere on task to navigate to the detailed view
+                HStack{  NavigationLink(">", destination: TodoDetailedView(id:item.id, title:item.title, description: item.description,dueDate:item.dueDate, isCompleted:item.isCompleted))
+                    .frame(width: 20.0)}
+              
                 
             }
            
