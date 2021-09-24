@@ -48,6 +48,7 @@ struct NoItemsView: View {
             .onAppear(perform: addAnimation)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color.yellow).ignoresSafeArea()
     }
     
     func addAnimation() {
@@ -62,7 +63,6 @@ struct NoItemsView: View {
             }
         }
     }
-    
 }
 
 struct NoItemsView_Previews: PreviewProvider {
