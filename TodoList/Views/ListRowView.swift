@@ -41,7 +41,7 @@ struct ListRowView: View {
                         .font(.subheadline).multilineTextAlignment(.leading)
                 }
                 HStack {
-                    Text("Due date: \(item.dueDate, formatter: dateFormatter)")
+                    Text("📆 Due date:  \(item.dueDate, formatter: dateFormatter)")
                         .font(.subheadline)
                 }
                
