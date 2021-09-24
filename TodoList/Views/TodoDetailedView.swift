@@ -47,6 +47,16 @@ struct TodoDetailedView: View {
                     .frame(height: 55)
                     .background(Color(UIColor.secondarySystemBackground))
                     .cornerRadius(10)
+                HStack{
+                    
+                    Image(systemName: isCompleted ? "checkmark.circle" : "circle")
+                        .foregroundColor(isCompleted ? .green : .red).padding().onTapGesture {
+                            withAnimation(.linear) {
+                                isCompleted = !isCompleted
+                            }
+                        }
+                }
+               
                 
                 Button(action: saveButtonPressed, label: {
                     Text("Save".uppercased())
@@ -68,7 +78,7 @@ struct TodoDetailedView: View {
     
     func saveButtonPressed() {
         if textIsAppropriate() {
-            listViewModel.updateItem(item: ItemModel(id: id, title: title, description: description, dueDate: dueDate, isCompleted: isCompleted))
+            listViewModel.modifyItem(item: ItemModel(id: id, title: title, description: description, dueDate: dueDate, isCompleted: isCompleted))
             presentationMode.wrappedValue.dismiss()
         }
     }

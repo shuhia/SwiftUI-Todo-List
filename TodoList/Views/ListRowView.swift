@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct ListRowView: View {
+    
+    @EnvironmentObject var listViewModel: ListViewModel
+    
     let dateFormatter: DateFormatter = {
             let formatter = DateFormatter()
             formatter.dateStyle = .long
@@ -19,24 +22,37 @@ struct ListRowView: View {
     var body: some View {
         
         HStack {
-            VStack {
-                HStack {
-                    Image(systemName: item.isCompleted ? "checkmark.circle" : "circle")
-                        .foregroundColor(item.isCompleted ? .green : .red)
+            
+            Image(systemName: item.isCompleted ? "checkmark.circle" : "circle")
+                .foregroundColor(item.isCompleted ? .green : .red).padding().onTapGesture {
+                    withAnimation(.linear) {
+                        listViewModel.updateItem(item: item)
+                    }
+                }
+            HStack{ VStack(alignment: .leading) {
+                
+                HStack(alignment: .center) {
                     Text(item.title)
-                        .font(.title2)
-                }
-                HStack {
-                    Text(item.description)
-                        .font(.subheadline)
-                }
-                HStack {
-                    Text("Due date is: \(item.dueDate, formatter: dateFormatter)")
-                        .font(.subheadline)
+                        .font(.title2).multilineTextAlignment(.leading)
                 }
                 
+                HStack {
+                    Text(item.description)
+                        .font(.subheadline).multilineTextAlignment(.leading)
+                }
+                HStack {
+                    Text("Due date: \(item.dueDate, formatter: dateFormatter)")
+                        .font(.subheadline)
+                }
+               
+            }.padding()
+                
+                NavigationLink("", destination: TodoDetailedView(id:item.id, title:item.title, description: item.description,dueDate:item.dueDate, isCompleted:item.isCompleted))
+                    .frame(width: 20.0) //tap anywhere on task to navigate to the detailed view
+                
             }
-            NavigationLink("", destination: TodoDetailedView(id:item.id, title:item.title, description: item.description,dueDate:item.dueDate, isCompleted:item.isCompleted)) //tap anywhere on task to navigate to the detailed view
+           
+           
         }
         .padding(6)
     }
