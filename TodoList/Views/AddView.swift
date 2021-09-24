@@ -20,37 +20,41 @@ struct AddView: View {
     @State var dueDate = Date()
     
     var body: some View {
-        ScrollView {
-            VStack {
-                TextField("Add a title here...", text: $textFieldTitle)
-                    .padding(.horizontal)
-                    .frame(height: 55)
-                    .background(Color(UIColor.secondarySystemBackground))
-                    .cornerRadius(10)
-                
-                TextField("Add a description here..", text: $textFieldDescription)
-                    .padding(.horizontal)
-                    .frame(height: 55)
-                    .background(Color(UIColor.secondarySystemBackground))
-                    .cornerRadius(10)
-                
-                DatePicker("Due date:",
-                           selection: $dueDate, displayedComponents: [.date])
-                
-                Button(action: saveButtonPressed, label: {
-                    Text("Save".uppercased())
-                        .foregroundColor(.white)
-                        .font(.headline)
-                        .frame(height: 55)
-                        .frame(maxWidth: .infinity)
-                        .background(Color.accentColor)
-                        .cornerRadius(10)
-                })
-            }
-            .padding(10)
+        ZStack {
+            Color.yellow.ignoresSafeArea()
+            ScrollView {
+                        VStack {
+                            TextField("Add a title here...", text: $textFieldTitle)
+                                .padding(.horizontal)
+                                .frame(height: 55)
+                                .background(Color(UIColor.secondarySystemBackground))
+                                .cornerRadius(10)
+                            
+                            TextField("Add a description here..", text: $textFieldDescription)
+                                .padding(.horizontal)
+                                .frame(height: 55)
+                                .background(Color(UIColor.secondarySystemBackground))
+                                .cornerRadius(10)
+                            
+                            DatePicker("Due date:",
+                                       selection: $dueDate, displayedComponents: [.date])
+                            
+                            Button(action: saveButtonPressed, label: {
+                                Text("Save".uppercased())
+                                    .foregroundColor(.white)
+                                    .font(.headline)
+                                    .frame(height: 55)
+                                    .frame(maxWidth: .infinity)
+                                    .background(Color.accentColor)
+                                    .cornerRadius(10)
+                            })
+                        }
+                        .padding(10)
+                    }
+                    .navigationTitle("Add an Item 🖊")
+                    .alert(isPresented: $showAlert, content: getAlert)
         }
-        .navigationTitle("Add an Item 🖊")
-        .alert(isPresented: $showAlert, content: getAlert)
+        
     }
     
     

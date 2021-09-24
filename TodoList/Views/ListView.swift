@@ -13,6 +13,7 @@ struct ListView: View {
     
     var body: some View {
         ZStack {
+            Color.yellow.ignoresSafeArea()
             if listViewModel.items.isEmpty {
                 NoItemsView()
                     .transition(AnyTransition.opacity.animation(.easeIn))
@@ -24,16 +25,14 @@ struct ListView: View {
                     }
                     .onDelete(perform: listViewModel.deleteItem)
                     .onMove(perform: listViewModel.moveItem)
-                }
-                .listStyle(PlainListStyle())
-            }
+                }.listRowBackground(Color.yellow)
+                .listStyle(PlainListStyle())            }
         }
         .navigationTitle("Todo List 📝")
         .navigationBarItems(
             leading: EditButton(),
             trailing:
-                NavigationLink("Add", destination: AddView())
-            )
+                NavigationLink("Add", destination: AddView()))
     }
 
 }

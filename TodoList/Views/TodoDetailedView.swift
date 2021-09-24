@@ -28,50 +28,54 @@ struct TodoDetailedView: View {
     
     
     var body: some View {
-        ScrollView {
-            VStack {
-                TextField("Title...", text: $title)
-                    .padding(.horizontal)
-                    .frame(height: 55)
-                    .background(Color(UIColor.secondarySystemBackground))
-                    .cornerRadius(10)
-                
-                TextEditor(text: $description) .multilineTextAlignment(.leading)
-                    .frame(height:232, alignment: .topLeading)
-                    .padding(.all).background(Color(UIColor.secondarySystemBackground))
-                    .cornerRadius(10)
-                
-                DatePicker("Due date:", selection: $dueDate, displayedComponents:[.date]
-                )
-                    .padding(.horizontal)
-                    .frame(height: 55)
-                    .background(Color(UIColor.secondarySystemBackground))
-                    .cornerRadius(10)
-                VStack(alignment: .leading){
-                    
-                    Image(systemName: isCompleted ? "checkmark.circle" : "circle")
-                        .foregroundColor(isCompleted ? .green : .red).padding().onTapGesture {
-                            withAnimation(.linear) {
-                                isCompleted = !isCompleted
-                            }
-                        }
-                }
-               
-                
-                Button(action: saveButtonPressed, label: {
-                    Text("Save".uppercased())
-                        .foregroundColor(.white)
-                        .font(.headline)
+        ZStack {
+            Color.yellow.ignoresSafeArea()
+            ScrollView {
+                VStack {
+                    TextField("Title...", text: $title)
+                        .padding(.horizontal)
                         .frame(height: 55)
-                        .frame(maxWidth: .infinity)
-                        .background(Color.accentColor)
+                        .background(Color(UIColor.secondarySystemBackground))
                         .cornerRadius(10)
-                })
+                    
+                    TextEditor(text: $description) .multilineTextAlignment(.leading)
+                        .frame(height:232, alignment: .topLeading)
+                        .padding(.all).background(Color(UIColor.secondarySystemBackground))
+                        .cornerRadius(10)
+                    
+                    DatePicker("Due date:", selection: $dueDate, displayedComponents:[.date]
+                    )
+                        .padding(.horizontal)
+                        .frame(height: 55)
+                        .background(Color(UIColor.secondarySystemBackground))
+                        .cornerRadius(10)
+                    VStack(alignment: .leading){
+                        
+                        Image(systemName: isCompleted ? "checkmark.circle" : "circle").font(.headline.bold()).frame(maxWidth: .infinity)
+                            .foregroundColor(isCompleted ? .green : .red).padding().onTapGesture {
+                                withAnimation(.linear) {
+                                    isCompleted = !isCompleted
+                                }
+                            }
+                    }.background(Color.white).cornerRadius(10)
+                   
+                    
+                    Button(action: saveButtonPressed, label: {
+                        Text("Save".uppercased())
+                            .foregroundColor(.white)
+                            .font(.headline)
+                            .frame(height: 55)
+                            .frame(maxWidth: .infinity)
+                            .background(Color.accentColor)
+                            .cornerRadius(10)
+                    })
+                }
+                .padding(14)
             }
-            .padding(14)
+            .navigationTitle("Detailed View 🖊")
+            .alert(isPresented: $showAlert, content: getAlert)
         }
-        .navigationTitle("Detailed View 🖊")
-        .alert(isPresented: $showAlert, content: getAlert)
+        
     }
     
     // MARK: FUNCTIONS
@@ -105,6 +109,7 @@ struct TodoDetailedView_Previews: PreviewProvider {
                 TodoDetailedView()
             }
             .preferredColorScheme(.light)
+            .frame(width: nil)
             .environmentObject(ListViewModel())
             NavigationView {
                 TodoDetailedView()

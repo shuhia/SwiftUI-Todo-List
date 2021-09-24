@@ -58,7 +58,7 @@
     <resources>
         <image name="checkmark.circle.fill" catalog="system" width="128" height="121"/>
         <namedColor name="AccentColor">
-            <color red="0.098269477486610413" green="0.41792675852775574" blue="0.86766660213470459" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.097999997437000275" green="0.41800001263618469" blue="0.86799997091293335" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

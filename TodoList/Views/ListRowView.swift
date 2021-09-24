@@ -23,12 +23,13 @@ struct ListRowView: View {
         
         HStack {
             
-            Image(systemName: item.isCompleted ? "checkmark.circle" : "circle")
+            Image(systemName: item.isCompleted ? "checkmark.circle" : "circle").background(Color.white).cornerRadius(10)
                 .foregroundColor(item.isCompleted ? .green : .red).padding().onTapGesture {
                     withAnimation(.linear) {
                         listViewModel.updateItem(item: item)
                     }
                 }
+            
             HStack{ VStack(alignment: .leading) {
                 
                 HStack(alignment: .center) {
@@ -48,6 +49,7 @@ struct ListRowView: View {
             }.padding()
                 HStack{  NavigationLink(">", destination: TodoDetailedView(id:item.id, title:item.title, description: item.description,dueDate:item.dueDate, isCompleted:item.isCompleted))
                     .frame(width: 20.0)}
+                    
               
                 
             }
@@ -55,6 +57,7 @@ struct ListRowView: View {
            
         }
         .padding(6)
+        .background(/*@START_MENU_TOKEN@*//*@PLACEHOLDER=View@*/Color.yellow/*@END_MENU_TOKEN@*/).ignoresSafeArea()
     }
     
 }
