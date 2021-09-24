@@ -31,12 +31,12 @@ struct ListRowView: View {
                         .font(.subheadline)
                 }
                 HStack {
-                    DatePicker(selection: $dueDate, in: Date()..., displayedComponents: .date) {
-                        Text("Due By:").font(.footnote)
-                    }
+                    Text("Due date is: \(item.dueDate, formatter: dateFormatter)")
+                        .font(.subheadline)
                 }
-                NavigationLink("", destination: TodoDetailedView()) //tap anywhere on task to navigate to the detailed view
+                
             }
+            NavigationLink("", destination: TodoDetailedView()) //tap anywhere on task to navigate to the detailed view
         }
         .padding(6)
     }
