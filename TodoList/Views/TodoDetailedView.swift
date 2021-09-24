@@ -85,7 +85,7 @@ struct TodoDetailedView: View {
     
     func textIsAppropriate() -> Bool {
         if title.count < 3 {
-            alertTitle = "Your new todo item must be at least 3 characters long!!! 😨😰😱"
+            alertTitle = "Your new todo item must be at least 3 characters long!😅"
             showAlert.toggle()
             return false
         }

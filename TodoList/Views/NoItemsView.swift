@@ -19,19 +19,19 @@ struct NoItemsView: View {
                     .font(.title)
                     .fontWeight(.semibold)
                 
-                Text("Are you a productive person? I think you should click the add button and add a bunch of items to your todo list!")
+                Text("Keep yourself organised and never miss a deadline again!")
                     .padding(.bottom, 20)
                 
                 NavigationLink(
                     destination: AddView(),
                     label: {
-                        Text("Add Something 🥳")
+                        Text("Add a new task 🎯")
                             .foregroundColor(.white)
                             .font(.headline)
                             .frame(height: 55)
                             .frame(maxWidth: .infinity)
                             .background(animate ? secondaryAccentColor : Color.accentColor)
-                            .cornerRadius(10)
+                            .cornerRadius(12)
                     })
                     .padding(.horizontal, animate ? 30 : 50)
                     .shadow(
